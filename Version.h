@@ -19,8 +19,9 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define VERSION "0.0.7"
+#define VERSION "0.0.8"
 
+// 0.0.8  - Add UNO and NANO definitions
 // 0.0.7  - Increase default transmit delay to 20000 to prevent false deactivations
 // 0.0.6  - Fix DefaultMega.cpp to alternate start state
 // 0.0.5  - Clean up class with auto increment ID

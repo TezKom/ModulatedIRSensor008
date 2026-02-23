@@ -22,9 +22,9 @@
 
 #if __has_include ("MyConfig.h")
   #include "MyConfig.h"
-#else
-  #warning MyConfig.h not found. Using defaults from DefaultConfig.h
-  #include "DefaultConfig.h"
+//#else
+//  #warning MyConfig.h not found. Using defaults from DefaultConfig.h
+//  #include "DefaultConfig.h"
 #endif
 
 #if __has_include("MySensors.h")
@@ -37,7 +37,11 @@
 #if defined(ARDUINO_BLUEPILL_F103C8)
 #define SENSOR_COUNT 14
 #elif defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_MEGA)
-#define SENSOR_COUNT 31
+#define SENSOR_COUNT 30
+#elif defined(ARDUINO_AVR_NANO)
+#define SENSOR_COUNT 9
+#elif defined(ARDUINO_AVR_UNO)
+#define SENSOR_COUNT 8
 #endif
 #endif
 
@@ -46,13 +50,17 @@
 #endif
 
 #ifndef DIAG_CONFIG_DELAY
-#define DIAG_CONFIG_DELAY 5
+#define DIAG_CONFIG_DELAY 2
 #endif
 
 #if defined(ARDUINO_BLUEPILL_F103C8)
 #define TOTAL_PINS 28
 #elif defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_MEGA)
 #define TOTAL_PINS 62
+#elif defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_NANO)
+#define TOTAL_PINS 18
+#elif defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_UNO)
+#define TOTAL_PINS 16
 #endif
 
 #define EXIOINIT 0xE0     // Flag to start setup procedure

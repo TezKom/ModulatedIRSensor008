@@ -38,6 +38,18 @@ PinNameMap pinNames[TOTAL_PINS] = {
   {A4,"A4"},{A5,"A5"},{A6,"A6"},{A7,"A7"},{A8,"A8"},{A9,"A9"},{A10,"A10"},{A11,"A11"},
   {A12,"A12"},{A13,"A13"},{A14,"A14"},{A15,"A15"},
 };
+#elif defined(ARDUINO_AVR_NANO)
+#include <avr/wdt.h>
+PinNameMap pinNames[TOTAL_PINS] = {
+  {2,"D2"},{3,"D3"},{4,"D4"},{5,"D5"},{6,"D6"},{7,"D7"},{8,"D8"},{9,"D9"},{10,"D10"},{11,"D11"},
+  {12,"D12"},{13,"D13"},{A0,"A0"},{A1,"A1"},{A2,"A2"},{A3,"A3"},{A6,"A6"},{A7,"A7"},
+};
+#elif defined(ARDUINO_AVR_UNO)
+#include <avr/wdt.h>
+PinNameMap pinNames[TOTAL_PINS] = {
+  {2,"D2"},{3,"D3"},{4,"D4"},{5,"D5"},{6,"D6"},{7,"D7"},{8,"D8"},{9,"D9"},{10,"D10"},{11,"D11"},
+  {12,"D12"},{13,"D13"},{A0,"A0"},{A1,"A1"},{A2,"A2"},{A3,"A3"},
+};
 #endif
 
 byte sensorStates[(SENSOR_COUNT/8)+1];
@@ -99,6 +111,12 @@ void reset() {
   NVIC_SystemReset();
   while(true) {};
 #elif defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_MEGA)
+  wdt_enable(WDTO_15MS);
+  delay(50);
+#elif defined(ARDUINO_AVR_NANO)
+  wdt_enable(WDTO_15MS);
+  delay(50);
+#elif defined(ARDUINO_AVR_UNO)
   wdt_enable(WDTO_15MS);
   delay(50);
 #endif

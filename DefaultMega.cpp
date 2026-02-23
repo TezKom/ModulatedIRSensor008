@@ -21,7 +21,9 @@
 
 /// @brief Configuration of the IR sensors in this format:
 ///        {transmitPin, receivePin, beamBreak}
-///        Set beamBreak to true if the transmitter and receiver are facing each other in a beam break configuration
+///        Set beamBreak to true if the transmitter and receiver are
+///        facing each other in a beam break configuration
+///        Default = false
 #if (defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_MEGA)) && !__has_include("MySensors.h")
 IRSensor* sensors[SENSOR_COUNT]={
   new IRSensor(2,3,true,false,false,20000,100),
