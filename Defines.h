@@ -22,9 +22,9 @@
 
 #if __has_include ("MyConfig.h")
   #include "MyConfig.h"
-//#else
-//  #warning MyConfig.h not found. Using defaults from DefaultConfig.h
-//  #include "DefaultConfig.h"
+#else
+  #warning MyConfig.h not found. Using defaults from DefaultConfig.h
+  #include "DefaultConfig.h"
 #endif
 
 #if __has_include("MySensors.h")
